@@ -21,18 +21,24 @@ function SplashScreen() {
   }, [fadeAnim]);
 
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <Animated.Image
         style={[styles.image, { opacity: fadeAnim }]}
         source={require("../assets/logo.png")}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 export default SplashScreen;

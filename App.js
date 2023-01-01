@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useRef, useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,13 +13,19 @@ import {
   useDeviceOrientation,
 } from "@react-native-community/hooks";
 import SplashScreen from "./components/SplashScreen";
+import HomeScreen from "./components/HomeScreen";
 
 export default function App() {
+  const [splashscreen, setsplashscreen] = useState(true);
+
+  setTimeout(() => {
+    setsplashscreen(false);
+  }, 5000);
   const { landscape } = useDeviceOrientation();
   return (
-    <SafeAreaView style={styles.container}>
-      <SplashScreen></SplashScreen>
-    </SafeAreaView>
+    <>
+      {splashscreen ? <SplashScreen></SplashScreen> : <HomeScreen></HomeScreen>}
+    </>
   );
 }
 
